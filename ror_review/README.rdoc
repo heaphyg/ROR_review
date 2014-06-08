@@ -1,0 +1,78 @@
+RAILS study guide
+
+STEP 1
+
+  rails new myapp -d postgresql -T <br />
+  the -T gets rid of the built in test unit<br />
+  put gem 'rspec' and source 'https://rubygems.org'(source already included)  in the Gemfile<br />  
+  rails s (server)<br />  
+
+STEP 2
+  
+  rails generate controller names<br /> (notice it's plural) 
+      app/controllers/names_controller.rb<br />  
+          class NamesController < ApplicationController<br />  
+      app/views/users <br />
+  rails generate model name<br />  
+      app/models/name.rb<br />   
+      app/db/migrate/20140605232950_create_names.rb<br /> 
+
+STEP 3
+
+  in app/config/routes.rb<br />   
+    setting a custom root path: <br />  
+    root :to => redirect('/dashboard')<br />  
+    match '/dashboard', :to => "dashboard#index"<br /> 
+    resources :names, only: [:index, :new, :create]<br /> 
+
+
+
+
+
+HTTP      Verb Path         Controller#Action     Used for<br />  
+GET       /photos           photos#index          display a list of all photos<br />  
+GET       /photos/new       photos#new            return an HTML form for creating a new photo<br />  
+POST      /photos           photos#create         create a new photo<br />  
+GET       /photos/:id       photos#show           display a specific photo<br />  
+GET       /photos/:id/edit  photos#edit           return an HTML form for editing a photo<br />  
+PATCH/PUT /photos/:id       photos#update         update a specific photo<br />  
+DELETE    /photos/:id       photos#destroy        delete a specific photo<br />  
+
+STEP 4 -fill out the migration
+
+  uncomment out bcrypt in the gem file and run bundle<br />
+  Actually just add gem 'bcrypt-ruby', '~> 3.1.0' this is nessa for has_secure_password<br />
+  t.password_digest<br />
+
+STEP 5 - run rake db:create, rake db:migrate, rake db:seed (if seed exists) 
+
+STEP 6 - fill out model
+
+  User model - has_secure_passord (password hashing)
+
+STEP 7
+  use rails console (c) to test associations - make sure that when you change a migration or add or delete one you need to drop and recreate the database<br />
+
+STEP 8 build view
+
+  find out what the name of the folder should be called that contains the homepage view and set that location to the root page - also find out what controller is associated with the homepage 
+
+
+  lookup how to make a partial form_for
+  check out checkers bau5 for adding a class to a form_for submit button
+  make a ajax version of this whole app
+  also whena user signs up their first and last name should be upper cased automatically
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
