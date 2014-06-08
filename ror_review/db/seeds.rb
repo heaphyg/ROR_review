@@ -9,7 +9,8 @@ User.create(name: "Randy Newman", email: "randy@newman.com", password: "password
 # posts
 
 50.times do
-  name = Faker::Lorem.name
+  name = Faker::Name.name
   content = Faker::Lorem.paragraph
-  Post.create(name: name, content: content)
+  num = rand(1..4)
+  Post.create(name: name, content: content, user_id: num)
 end
